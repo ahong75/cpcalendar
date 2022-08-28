@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
-// Turn to contest object with needed properties
-const ContestEntry = ({ contest }) => {
-    const { name, link, date} = contest
-    return (
-        <li>{name} {link} {date}</li>
-    )
-}
+import ContestEntry from './components/ContestEntry'
 
 const App = () => {
     const [contests, setContests] = useState([])
