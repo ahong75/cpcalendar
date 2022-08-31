@@ -13,12 +13,10 @@ const App = () => {
                 setContests(response.data)
             })
     }, [])
-    
-    console.log(contests)
     return (
         <div>
             <ul>
-                {contests.map(contest => <ContestEntry contest={contest} key={contest.key}/>)}
+                {contests.map(contest => <ContestEntry contest={contest} key={contest.name}/>)}
             </ul>
         </div>
     )

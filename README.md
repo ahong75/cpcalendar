@@ -1,5 +1,5 @@
 Features to be implemented
-- Contest entries
-- Frontend logic to render upcoming contests
-- Timestamps
-- Basic REST API to hold contest entries
+- Organizing the contest entries
+- Pulling from other contest sites
+- Basic REST API + database to hold contest entries
+- Making the website not look completely horrible

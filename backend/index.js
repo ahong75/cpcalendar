@@ -5,7 +5,6 @@ const contestRouter = require('./controllers/contests')
 
 app.use(express.json())
 app.use(cors())
-
 app.use('/', contestRouter)
 
 const PORT = 3001
