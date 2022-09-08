@@ -6,8 +6,8 @@ const parseCodeforcesContests = async () => {
         return response.then(response => response.data)
     }
     const contestData = await getCodeforcesContests()
-    const contestArray = contestData.data
-    const contests = contestArray[1].reduce((res, contest) => {
+    const contestArray = contestData.result
+    const contests = contestArray.reduce((res, contest) => {
         if (contest.phase === 'BEFORE') {
             res.push({
                 name: contest.name,
@@ -43,16 +43,15 @@ const parseAtCoderContests = async () => {
         }
         return res;
     }, [])
-    console.log(contests)
     return contests
 }
 
-const endpoints = [parseAtCoderContests]
+const endpoints = [parseAtCoderContests, parseCodeforcesContests]
 
 const aggregate = async () => {
-    const contests = endpoints.reduce(async (res, endpoint) => {
-        res = res.concat(await endpoint())
-        return res;
+    const contestEndpoints = await Promise.all(endpoints.map(endpoint => endpoint()))
+    const contests = contestEndpoints.reduce((res, contestEndpoint) => {
+        return res.concat(contestEndpoint)
     }, [])
     return contests
 }
